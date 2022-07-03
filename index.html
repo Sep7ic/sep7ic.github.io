@@ -144,18 +144,21 @@ ul ul{
     <div class="squishythingy">
         <ul>
             <li><a href="#home" >Home</a></li>
-            <li><a href="#2022">2022</a></li>
-            <ul>
-                <li><a href="#june">June</a></li>
-                <li><a href="#july">July</a></li>
-                <li><a href="#august">August</a></li>
-            </ul>
+                <li><a href="#june2022">June 2022</a></li>
+                <li><a href="#july2022">July 2022</a></li>
+                <li><a href="#august2022">August 2022</a></li>
         </ul>
         <img src="https://web.archive.org/web/20041106220710/http://www.geocities.com:80/Waterose_Test/book.gif" alt="">
-    </div>
+
+        <form class='searchbox'>
+          <input class="searchbar" type="text" placeholder="Search by name or date" name="search">
+        </form>
+
+
+      </div>
 
    
-<div class="maincontent">
+<div class="maincontent" id="maincontent">
 
     <article class="wrapper" id="home">
       <header>
@@ -170,20 +173,31 @@ ul ul{
         <img src="images/earth.jpg" alt="earth pointing to NZ">
 
         <p>my greatest condolences if the images dont load, youre probably aliens seeing this years into the future, so ill try my best to save them to a folder rather than using their image address</p>
-        
       </section>
     </article>
-    
+
+    <article class="wrapper" id="July">
+      <header>
+        <h1 class="title">wow</h1>
+        <h2 class="date">- septic, 3/07/2022 3:33pm NZT</h2>
+      </header>
+      <section>
+        <p>i hope youre enjoying this so far. today i got some headphones. we went to harvey norman but they didnt have the ones i wanted there so i went to pb tech instead. i just realised youre probably an alien and dont know what headphones are but you listen to music on them, ill link the ones i got down below. (i wonder if this link will still work in 100 years or whenever you recieve it)</p>
+        <a href="https://www.pbtech.co.nz/product/HSTAUK0012/Aukey-Wireless-Over-Ear-Noise-Cancelling-Headphone">Aukey-Wireless-Over-Ear-Noise-Cancelling-Headphone</a>
+        <img src="images/headphones.webp" alt="">
+      </section>
+    </article>
+
     <article class="wrapper" id="July">
       <header>
         <h1 class="title">i bought headphones today</h1>
         <h2 class="date">- septic, 2/07/2022 5:12pm NZT</h2>
       </header>
       <section>
-        <p>i hope youre enjoying this so far. today i got some headphones. we went to harvey norman but they didnt have the ones i wanted there so i went to pb tech instead. i just realised youre probably an alien and dont know what headphones are but you listen to music on them, ill link the ones i got down below. (i wonder if this link will still work in 10 years.)</p>
+        <p>i hope youre enjoying this so far. today i got some headphones. we went to harvey norman but they didnt have the ones i wanted there so i went to pb tech instead. i just realised youre probably an alien and dont know what headphones are but you listen to music on them, ill link the ones i got down below. (i wonder if this link will still work in 100 years or whenever you recieve it)</p>
         <a href="https://www.pbtech.co.nz/product/HSTAUK0012/Aukey-Wireless-Over-Ear-Noise-Cancelling-Headphone">Aukey-Wireless-Over-Ear-Noise-Cancelling-Headphone</a>
         <img src="images/headphones.webp" alt="">
-      <p>its now 10:50pm NZT, ive been playing around on github and think im going to go to sleep now, goodnight.</p>
+      <p>its now 10:50pm NZT, ive been playing around on github and think im going to go to sleep now, goodnight, septic out.</p>
       </section>
     </article>
     
@@ -200,8 +214,24 @@ ul ul{
 </body>
 
 <script>
+const searchEl = document.querySelector('.searchbox');
+const x = document.querySelectorAll('.maincontent .wrapper header h1:nth-child(1)');
 
+function search(e){
+  x.forEach((item,index) => {
+    if(!item.innerHTML.toLowerCase().includes(e.target.value)){
+      var children = document.getElementById("maincontent").children;
 
+      for (let i = 0; i < children.length; i++) {
+        children[i].style.display = "none";
+      }
+    }else {
+      item.parentElement.parentElement.style.display = 'block';
+    }
+  })
+}
+
+searchEl.addEventListener("keyup", search);   
 </script>
 
 </html>
